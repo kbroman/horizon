@@ -1,0 +1,17 @@
+dependencies:
+  - name: d3
+    src: htmlwidgets/lib/d3
+    version: 2.10.3
+    script:
+      - d3.v2.js
+  - name: cubism
+    src: htmlwidgets/lib/cubism
+    version: 1.6.0
+    script:
+      - cubism.v1.js
+  - name: cubism_horizon
+    src: htmlwidgets/lib/cubism_horizon
+    version: 0.1.1
+    script:
+      - cubism_horizon.js
+    style: cubism_horizon.css

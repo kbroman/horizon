@@ -14,7 +14,7 @@ Suggests:
     jsonlite,
     devtools,
     roxygen2,
-License: GPL-3 | file License.md
+License: GPL-3 | file LICENSE
 URL: http://github.com/kbroman/horizon
 Roxygen: list(wrap=FALSE)
 LazyData: true

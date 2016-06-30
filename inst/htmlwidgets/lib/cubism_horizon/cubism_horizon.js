@@ -1,39 +1,10 @@
-d3.csv("test2.csv", function(rows) {
-
-    // parse the rows and pull out
-    // ... the dates (column must be "date")
-    var dates = rows.map(function(d) { return(d.date) })
-    // ... the labels on the other columns
-    var labels = Object.keys(rows[0]).filter(function(d) { if(d != "date") return(d) })
-    // ... the data for the other columns
-    var data_by_row = rows.map(function(d) {
-        return(labels.map(function(e) { return(+d[e]) }))
-    })
-
-    // transpose the data
-    var data_by_col = labels.map(function(d) { return([]) })
-    for(i=0; i<labels.length; i++) {
-        data_by_col[i] = data_by_row.map(function(d) { return(d[i]) })
-    }
-
-    for(i=0; i<labels.length; i++) { // introduce more variability among columns
-        data_by_col[i] = data_by_col[2].map(function(d) { return((d-0.1)*(i/5+1)) })
-    }
-
-    // so now we have
-    // - dates as a bunch of strings
-    // - labels for the columns (I think alphabetical order)
-    // - the data, as a doubly-indexed array, stored by column
-
-    cubism_plot(dates, labels, data_by_col)
-
-})
-
-
-
 // function to make the plot
-cubism_plot = function(dates, labels, data_by_col)
+cubism_plot = function(div, dates, labels, data_by_col)
 {
+    console.log(dates)
+    console.log(labels)
+    console.log(data_by_col)
+
     // dates from strings to proper dates
     var format = d3.time.format("%Y-%m-%d");
     dates = dates.map(function(d) { return(format.parse(d)) })
@@ -55,7 +26,7 @@ cubism_plot = function(dates, labels, data_by_col)
         .size(width)
         .stop();
 
-    var div = d3.select("div#chart").style("width", width + "px")
+    div.style("width", width + "px")
 
     div.append("div")
         .attr("class", "rule")
