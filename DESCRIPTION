@@ -1,0 +1,22 @@
+Package: horizon
+Version: 0.1-1
+Date: 2016-06-30
+Title: Static horizon chart
+Author: Karl W Broman [aut, cre]
+Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
+Description: Static horizon chart using cubism.js.
+Depends:
+    R (>= 2.15)
+Imports:
+    htmlwidgets
+Suggests:
+    htmltools,
+    jsonlite,
+    devtools,
+    roxygen2,
+License: GPL-3 | file License.md
+URL: http://github.com/kbroman/horizon
+Roxygen: list(wrap=FALSE)
+LazyData: true
+RoxygenNote: 5.0.1
+Authors@R: person("Karl W", "Broman", role=c("aut", "cre"), email="kbroman@biostat.wisc.edu")
