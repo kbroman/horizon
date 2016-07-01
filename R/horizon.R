@@ -6,6 +6,8 @@
 #' @param df  Data frame with rows = dates, columns = values to plot
 #' @param width width in pixels
 #' @param height height in pixels
+#' @param axis_height height of axis in pixels
+#' @param axis_ticks Number of ticks on axes
 #'
 #' @import htmlwidgets
 #'
@@ -15,14 +17,16 @@
 #' horizon(x[,1], x[,-1])
 #'
 #' @export
-horizon <- function(dates, df, width = 600, height = 400)
+horizon <- function(dates, df, width = NULL, height = NULL,
+                    axis_height = 30, axis_ticks=4)
 {
-
     lab <- colnames(df)
     df <- as.list(df)
     names(df) <- NULL
 
-    x = list(dates=dates, labels=lab, data=df)
+    x = list(dates=dates, labels=lab, data=df,
+             chartOpts=list(height=height, axis_height=axis_height,
+                            axis_ticks=axis_ticks))
 
     # create widget
     htmlwidgets::createWidget(
@@ -30,6 +34,11 @@ horizon <- function(dates, df, width = 600, height = 400)
         x,
         width = width,
         height = height,
+        sizingPolicy=htmlwidgets::sizingPolicy(
+                    browser.defaultWidth=800,
+                    browser.defaultHeight=600,
+                    knitr.defaultWidth=800,
+                    knitr.defaultHeight=600),
         package = 'horizon'
         )
 }

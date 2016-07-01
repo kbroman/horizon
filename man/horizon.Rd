@@ -4,7 +4,8 @@
 \alias{horizon}
 \title{Horizon chart}
 \usage{
-horizon(dates, df, width = 600, height = 400)
+horizon(dates, df, width = 800, height = 600, axis_height = 30,
+  axis_ticks = 4)
 }
 \arguments{
 \item{dates}{Vector of dates as character strings \code{"YYYY-MM-DD"}.}
@@ -14,6 +15,10 @@ horizon(dates, df, width = 600, height = 400)
 \item{width}{width in pixels}
 
 \item{height}{height in pixels}
+
+\item{axis_height}{height of axis in pixels}
+
+\item{axis_ticks}{Number of ticks on axes}
 }
 \description{
 Horizon chart of multiple time series

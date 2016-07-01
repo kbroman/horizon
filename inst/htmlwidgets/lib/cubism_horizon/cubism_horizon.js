@@ -1,6 +1,11 @@
 // function to make the plot
-cubism_plot = function(div, dates, labels, data_by_col)
+cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
 {
+    // chart options
+    var height = chartOpts.height
+    var axis_height = chartOpts.axis_height
+    var axis_ticks = chartOpts.axis_ticks
+
     // dates from strings to proper dates
     var format = d3.time.format("%Y-%m-%d");
     dates = dates.map(function(d) { return(format.parse(d)) })
@@ -11,9 +16,10 @@ cubism_plot = function(div, dates, labels, data_by_col)
 
     // gap in times
     var gap = (+dates[1] - +dates[0])
+
+    // other parameters
     var width = dates.length
-    var axis_height = 30
-    var horizon_height = 80
+    var horizon_height = (height - axis_height*2) / labels.length
 
     var dF = new Date(2015,1,1)
     var context = cubism.context()
@@ -29,15 +35,14 @@ cubism_plot = function(div, dates, labels, data_by_col)
         .call(context.rule());
 
     // top axis
-    var top_axis = context.axis().orient("top").ticks(4)
+    var top_axis = context.axis().orient("top").ticks(axis_ticks)
     var top_axis_svg = div.append("svg")
         .attr("width", width).attr("class", "top axis")
                       .attr("height", axis_height)
-        .append("g")
     top_axis_svg.call(top_axis)
 
     // bottom axis
-    var bottom_axis = context.axis().orient("bottom").ticks(4)
+    var bottom_axis = context.axis().orient("bottom").ticks(axis_ticks)
     var bottom_axis_svg = div.append("svg")
         .attr("width", width).attr("class", "bottom axis")
                       .attr("height", axis_height)
