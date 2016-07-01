@@ -32,9 +32,20 @@
 #' @import htmlwidgets
 #'
 #' @examples
-#' file <- system.file("extdata", "test.csv", package="horizon")
-#' x <- read.csv(file, stringsAsFactors=FALSE)
-#' horizon(x[,1], x[,-1])
+#' n <- 600  # number of time points
+#' p <- 26   # number of time series
+#'
+#' # construct sequence of dates
+#' dates <- as.character( seq( lubridate::ymd("1969-12-20"), by=7, length=n) )
+#'
+#' # simulate brownian motion, all starting at 0
+#' y <- matrix(0, nrow=n, ncol=p)
+#' y[-1,] <- rnorm((n-1)*p, 0, 0.25)
+#' y <- apply(y, 2, cumsum)
+#' colnames(y) <- letters[1:p]
+#'
+#' # make the horizon plot
+#' horizon(dates, y)
 #'
 #' @export
 horizon <- function(dates, df, date_format = "%Y-%m-%d",
