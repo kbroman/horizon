@@ -34,6 +34,8 @@ cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
         .attr("class", "rule")
         .call(context.rule());
 
+    // set x-axis domain to observed range of dates
+    context.scale.domain([dates[0], dates[dates.length-1]])
     // top axis
     var top_axis = context.axis().orient("top").ticks(axis_ticks)
     var top_axis_svg = div.append("svg")
