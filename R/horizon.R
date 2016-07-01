@@ -39,6 +39,14 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
                     axis_height = 30, axis_ticks=4)
 {
     lab <- colnames(df)
+    if(is.null(lab))
+        lab <- paste0("col", 1:ncol(df))
+
+    if(!is.data.frame(df))
+        df <- as.data.frame(df)
+
+    stopifnot(length(dates) == nrow(df))
+
     df <- as.list(df)
     names(df) <- NULL
 
