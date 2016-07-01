@@ -1,10 +1,6 @@
 // function to make the plot
 cubism_plot = function(div, dates, labels, data_by_col)
 {
-    console.log(dates)
-    console.log(labels)
-    console.log(data_by_col)
-
     // dates from strings to proper dates
     var format = d3.time.format("%Y-%m-%d");
     dates = dates.map(function(d) { return(format.parse(d)) })
