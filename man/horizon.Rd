@@ -31,7 +31,7 @@ The input \code{dates} need to be converted from character strings to JSON dates
 The argument \code{date_format} is used for this. It's a character string like
 \code{"\%Y-\%m-\%d"} that is used to parse the dates. Here are some of the available
 codes. (For a complete list, see
-\href{https://github.com/d3/d3-time-format#locale_format}{the d3.js documentation}.
+\href{https://github.com/d3/d3-time-format#locale_format}{the d3.js documentation}.)
 
 \itemize{
 \item \code{\%Y} - 4-digit year (e.g., \code{2016})
