@@ -17,7 +17,8 @@ HTMLWidgets.widget({
 
         // make the plot
         cubism_plot(d3.select(widgetdiv),
-                    x.dates, x.labels, x.data, x.chartOpts)
+                    x.dates, x.labels, x.data,
+                    x.date_format, x.chartOpts)
     },
 
     resize: function(widgetdiv, width, height) {

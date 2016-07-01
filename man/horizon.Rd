@@ -4,13 +4,15 @@
 \alias{horizon}
 \title{Horizon chart}
 \usage{
-horizon(dates, df, width = 800, height = 600, axis_height = 30,
-  axis_ticks = 4)
+horizon(dates, df, date_format = "\%Y-\%m-\%d", width = NULL,
+  height = NULL, axis_height = 30, axis_ticks = 4)
 }
 \arguments{
-\item{dates}{Vector of dates as character strings \code{"YYYY-MM-DD"}.}
+\item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"})}
 
 \item{df}{Data frame with rows = dates, columns = values to plot}
+
+\item{date_format}{A character string representing the format of \code{dates}.}
 
 \item{width}{width in pixels}
 
@@ -22,6 +24,22 @@ horizon(dates, df, width = 800, height = 600, axis_height = 30,
 }
 \description{
 Horizon chart of multiple time series
+}
+\details{
+The input \code{dates} need to be converted from character strings to JSON dates.
+
+The argument \code{date_format} is used for this. It's a character string like
+\code{"\%Y-\%m-\%d"} that is used to parse the dates. Here are some of the available
+codes. (For a complete list, see
+\href{https://github.com/d3/d3-time-format#locale_format}{the d3.js documentation}.
+
+\itemize{
+\item \code{\%Y} - 4-digit year (e.g., \code{2016})
+\item \code{\%y} - 2-digit year (e.g., \code{16})
+\item \code{\%m} - 2-digit month
+\item \code{\%d} - 2-digit day-of-month
+\item \code{\%b} - Month as text (e.g., \code{Mar})
+}
 }
 \examples{
 file <- system.file("extdata", "test.csv", package="horizon")

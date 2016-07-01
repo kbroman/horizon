@@ -1,5 +1,5 @@
 // function to make the plot
-cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
+cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 {
     // chart options
     var height = chartOpts.height
@@ -7,7 +7,7 @@ cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
     var axis_ticks = chartOpts.axis_ticks
 
     // dates from strings to proper dates
-    var format = d3.time.format("%Y-%m-%d");
+    var format = d3.time.format(date_format);
     dates = dates.map(function(d) { return(format.parse(d)) })
 
     // range of data
@@ -36,6 +36,9 @@ cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
 
     // set x-axis domain to observed range of dates
     context.scale.domain([dates[0], dates[dates.length-1]])
+
+    // FIX ME: combine the code for the two axes to reduce repetition of code
+    // FIX ME: need to get the axes within the widgetdiv container (currently pushed to top and bottom of page)
     // top axis
     var top_axis = context.axis().orient("top").ticks(axis_ticks)
     var top_axis_svg = div.append("svg")
@@ -63,6 +66,7 @@ cubism_plot = function(div, dates, labels, data_by_col, chartOpts)
         .call(context.horizon().height(horizon_height)
               .extent(ylim) // adjust y-axis in each
               .format(d3.format(".3f")));
+    // FIX ME: need to add control of colors with .colors()
 
     context.on("focus", function(i) {
         d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");

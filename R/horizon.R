@@ -2,12 +2,29 @@
 #'
 #' Horizon chart of multiple time series
 #'
-#' @param dates Vector of dates as character strings \code{"YYYY-MM-DD"}.
+#' @param dates Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"})
 #' @param df  Data frame with rows = dates, columns = values to plot
+#' @param date_format A character string representing the format of \code{dates}.
 #' @param width width in pixels
 #' @param height height in pixels
 #' @param axis_height height of axis in pixels
 #' @param axis_ticks Number of ticks on axes
+#'
+#' @details
+#' The input \code{dates} need to be converted from character strings to JSON dates.
+#'
+#' The argument \code{date_format} is used for this. It's a character string like
+#' \code{"\%Y-\%m-\%d"} that is used to parse the dates. Here are some of the available
+#' codes. (For a complete list, see
+#' \href{https://github.com/d3/d3-time-format#locale_format}{the d3.js documentation}.)
+#'
+#' \itemize{
+#' \item \code{\%Y} - 4-digit year (e.g., \code{2016})
+#' \item \code{\%y} - 2-digit year (e.g., \code{16})
+#' \item \code{\%m} - 2-digit month
+#' \item \code{\%d} - 2-digit day-of-month
+#' \item \code{\%b} - Month as text (e.g., \code{Mar})
+#' }
 #'
 #' @import htmlwidgets
 #'
@@ -17,14 +34,15 @@
 #' horizon(x[,1], x[,-1])
 #'
 #' @export
-horizon <- function(dates, df, width = NULL, height = NULL,
+horizon <- function(dates, df, date_format = "%Y-%m-%d",
+                    width = NULL, height = NULL,
                     axis_height = 30, axis_ticks=4)
 {
     lab <- colnames(df)
     df <- as.list(df)
     names(df) <- NULL
 
-    x = list(dates=dates, labels=lab, data=df,
+    x = list(dates=dates, labels=lab, data=df, date_format=date_format,
              chartOpts=list(height=height, axis_height=axis_height,
                             axis_ticks=axis_ticks))
 
