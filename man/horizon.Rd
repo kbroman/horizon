@@ -45,6 +45,12 @@ codes. (For a complete list, see
 }
 }
 \examples{
+# data included with package
+file <- system.file("extdata", "test.csv", package="horizon")
+x <- read.csv(file)
+horizon(x[,1], x[,-1])
+
+# second example with simulated data
 n <- 600  # number of time points
 p <- 26   # number of time series
 
