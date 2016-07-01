@@ -8,7 +8,10 @@ horizon(dates, df, date_format = "\%Y-\%m-\%d", width = NULL,
   height = NULL, axis_height = 30, axis_ticks = 4)
 }
 \arguments{
-\item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"})}
+\item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"}).
+They need to be equally-spaced. (And actually, on the first,
+second, and last values are actually used: first and second define
+gap, and first and last define the time axes.}
 
 \item{df}{Data frame with rows = dates, columns = values to plot}
 

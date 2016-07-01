@@ -2,7 +2,10 @@
 #'
 #' Horizon chart of multiple time series
 #'
-#' @param dates Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"})
+#' @param dates Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"}).
+#' They need to be equally-spaced. (And actually, on the first,
+#' second, and last values are actually used: first and second define
+#' gap, and first and last define the time axes.
 #' @param df  Data frame with rows = dates, columns = values to plot
 #' @param date_format A character string representing the format of \code{dates}.
 #' @param width width in pixels
