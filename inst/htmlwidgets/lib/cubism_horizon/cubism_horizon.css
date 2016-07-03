@@ -15,7 +15,7 @@ header {
 
 .axis {
   font: 10px sans-serif;
-  position: fixed;
+  position: relative;
   pointer-events: none;
   z-index: 2;
 }
