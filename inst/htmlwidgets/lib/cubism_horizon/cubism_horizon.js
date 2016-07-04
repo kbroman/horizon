@@ -37,10 +37,10 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     // set x-axis domain to observed range of dates
     context.scale.domain([dates[0], dates[dates.length-1]])
 
-    // FIX ME: need to get the axes within the widgetdiv container (currently pushed to top and bottom of page)
     // top axis
     var top_axis = context.axis().orient("top").ticks(axis_ticks)
     var top_axis_svg = div.append("div").attr("class", "axis")
+                                        .style("height", axis_height + "px")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)
                                         .call(top_axis)
@@ -62,6 +62,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     // bottom axis
     var bottom_axis = context.axis().orient("bottom").ticks(axis_ticks)
     var bottom_axis_svg = div.append("div").attr("class", "axis")
+                                           .style("height", axis_height + "px")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)
                                         .call(bottom_axis)
@@ -69,6 +70,10 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     context.on("focus", function(i) {
         d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
     });
+
+    // adjust text alignment
+    div.selectAll("span.value").style("line-height", horizon_height + "px")
+    div.selectAll("span.title").style("line-height", horizon_height + "px")
 
     function make_metric(vector, label) {
         return context.metric(function(start, stop, step, callback) {
