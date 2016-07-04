@@ -12,6 +12,11 @@
 #' @param height height in pixels
 #' @param axis_height height of axis in pixels
 #' @param axis_ticks Number of ticks on axes
+#' @param colors A vector of character strings with RGB colors (like
+#' \code{"#rrggbb"}). Must have an event number of elements.
+#' \code{length(colors)/2} determines the number of bands; the first
+#' half are the colors used for the negative bands, and the second
+#' half are the colors for the positive bands.
 #'
 #' @details
 #' The input \code{dates} need to be converted from character strings to JSON dates.
@@ -56,7 +61,8 @@
 #' @export
 horizon <- function(dates, df, date_format = "%Y-%m-%d",
                     width = NULL, height = NULL,
-                    axis_height = 30, axis_ticks=4)
+                    axis_height = 30, axis_ticks=4,
+                    colors=NULL)
 {
     lab <- colnames(df)
     if(is.null(lab))
@@ -70,9 +76,15 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
     df <- as.list(df)
     names(df) <- NULL
 
+    if(is.null(colors))
+        colors <- c("#08519c", "#3182bd", "#6baed6", "#bdd7e7",
+                    "#bae4b3", "#74c476", "#31a354", "#006d2c")
+    if(length(colors) %% 2 != 0)
+        stop("length(colors) must be even")
+
     x = list(dates=dates, labels=lab, data=df, date_format=date_format,
              chartOpts=list(height=height, axis_height=axis_height,
-                            axis_ticks=axis_ticks))
+                            axis_ticks=axis_ticks, colors=colors))
 
     # create widget
     htmlwidgets::createWidget(

@@ -1,3 +1,5 @@
+var my_colors = null
+
 // function to make the plot
 cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 {
@@ -5,6 +7,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     var height = chartOpts.height
     var axis_height = chartOpts.axis_height
     var axis_ticks = chartOpts.axis_ticks
+    var colors = chartOpts.colors
 
     // dates from strings to proper dates
     var format = d3.time.format(date_format);
@@ -55,6 +58,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
         .enter().append("div")
         .attr("class", "horizon")
         .call(context.horizon().height(horizon_height)
+              .colors(colors)
               .extent(ylim) // adjust y-axis in each
               .format(d3.format(".3f")));
     // FIX ME: need to add control of colors with .colors()

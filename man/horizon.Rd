@@ -5,7 +5,7 @@
 \title{Horizon chart}
 \usage{
 horizon(dates, df, date_format = "\%Y-\%m-\%d", width = NULL,
-  height = NULL, axis_height = 30, axis_ticks = 4)
+  height = NULL, axis_height = 30, axis_ticks = 4, colors = NULL)
 }
 \arguments{
 \item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"}).
@@ -24,6 +24,12 @@ gap, and first and last define the time axes.}
 \item{axis_height}{height of axis in pixels}
 
 \item{axis_ticks}{Number of ticks on axes}
+
+\item{colors}{A vector of character strings with RGB colors (like
+\code{"#rrggbb"}). Must have an event number of elements.
+\code{length(colors)/2} determines the number of bands; the first
+half are the colors used for the negative bands, and the second
+half are the colors for the positive bands.}
 }
 \description{
 Horizon chart of multiple time series
