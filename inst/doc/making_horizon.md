@@ -1,9 +1,4 @@
----
-title: "Making the horizon package"
-author: "Karl Broman"
-date: "6 July 2016"
-output: html_document
----
+## Making the horizon package
 
 The [R/horizon package](https://github.com/kbroman/horizon) is
 an [htmlwidgets](http://www.htmlwidgets.org)-based R package for
