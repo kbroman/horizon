@@ -1,10 +1,10 @@
 Package: horizon
 Version: 0.1-4
 Date: 2016-07-06
-Title: Horizon chart
+Title: Horizon Chart
 Author: Karl W Broman [aut, cre]
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
-Description: Horizon chart using cubism.js.
+Description: Plot time series as a horizon chart using cubism.js.
 Depends:
     R (>= 2.15)
 Imports:
@@ -15,7 +15,7 @@ Suggests:
     devtools,
     roxygen2,
 License: GPL-3 | file LICENSE
-URL: http://github.com/kbroman/horizon
+URL: https://github.com/kbroman/horizon
 Roxygen: list(wrap=FALSE)
 LazyData: true
 RoxygenNote: 5.0.1
