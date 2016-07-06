@@ -22,7 +22,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 
     // other parameters
     var width = dates.length
-    var horizon_height = (height - axis_height*2) / labels.length
+    var horizon_height = Math.floor( (height - axis_height*2) / labels.length )
 
     var dF = new Date(2015,1,1)
     var context = cubism.context()
