@@ -4,8 +4,9 @@
 \alias{horizon}
 \title{Horizon chart}
 \usage{
-horizon(dates, df, date_format = "\%Y-\%m-\%d", width = NULL,
-  height = NULL, axis_height = 30, axis_ticks = 4, colors = NULL)
+horizon(dates, df, date_format = "\%Y-\%m-\%d", digits = NULL,
+  width = NULL, height = NULL, axis_height = 30, axis_ticks = 4,
+  colors = NULL)
 }
 \arguments{
 \item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"}).
@@ -16,6 +17,8 @@ gap, and first and last define the time axes.}
 \item{df}{Data frame with rows = dates, columns = values to plot}
 
 \item{date_format}{A character string representing the format of \code{dates}.}
+
+\item{digits}{Number of digits to show when hovering.}
 
 \item{width}{width in pixels}
 

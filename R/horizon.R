@@ -8,6 +8,7 @@
 #' gap, and first and last define the time axes.
 #' @param df  Data frame with rows = dates, columns = values to plot
 #' @param date_format A character string representing the format of \code{dates}.
+#' @param digits Number of digits to show when hovering.
 #' @param width width in pixels
 #' @param height height in pixels
 #' @param axis_height height of axis in pixels
@@ -60,7 +61,7 @@
 #'
 #' @export
 horizon <- function(dates, df, date_format = "%Y-%m-%d",
-                    width = NULL, height = NULL,
+                    digits = NULL, width = NULL, height = NULL,
                     axis_height = 30, axis_ticks=4,
                     colors=NULL)
 {
@@ -82,9 +83,16 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
     if(length(colors) %% 2 != 0)
         stop("length(colors) must be even")
 
+    if(is.null(digits)) {
+        digits <- ceiling(log10(diff(range(unlist(df), na.rm=TRUE))))
+        digits <- 4 - digits
+        digits <- ifelse(digits < 0, 0, digits)
+    }
+
     x = list(dates=dates, labels=lab, data=df, date_format=date_format,
              chartOpts=list(height=height, axis_height=axis_height,
-                            axis_ticks=axis_ticks, colors=colors))
+                            axis_ticks=axis_ticks, colors=colors,
+                            digits=digits))
 
     # create widget
     htmlwidgets::createWidget(
