@@ -9,6 +9,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     var axis_ticks = chartOpts.axis_ticks
     var colors = chartOpts.colors
     var digits = chartOpts.digits
+    var padding = chartOpts.padding
 
     // dates from strings to proper dates
     var format = d3.time.format(date_format);
@@ -23,7 +24,7 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 
     // other parameters
     var width = dates.length
-    var horizon_height = Math.floor( (height - axis_height*2) / labels.length )
+    var horizon_height = Math.floor( (height - axis_height*2 - padding*2) / labels.length )
 
     var dF = new Date(2015,1,1)
     var context = cubism.context()

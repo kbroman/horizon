@@ -13,11 +13,13 @@
 #' @param height height in pixels
 #' @param axis_height height of axis in pixels
 #' @param axis_ticks Number of ticks on axes
+#' @param padding Padding around figure
 #' @param colors A vector of character strings with RGB colors (like
 #' \code{"#rrggbb"}). Must have an event number of elements.
 #' \code{length(colors)/2} determines the number of bands; the first
 #' half are the colors used for the negative bands, and the second
 #' half are the colors for the positive bands.
+#'
 #'
 #' @details
 #' The input \code{dates} need to be converted from character strings to JSON dates.
@@ -62,7 +64,7 @@
 #' @export
 horizon <- function(dates, df, date_format = "%Y-%m-%d",
                     digits = NULL, width = NULL, height = NULL,
-                    axis_height = 30, axis_ticks=4,
+                    axis_height = 30, axis_ticks=4, padding=15,
                     colors=NULL)
 {
     lab <- colnames(df)
@@ -92,7 +94,7 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
     x = list(dates=dates, labels=lab, data=df, date_format=date_format,
              chartOpts=list(height=height, axis_height=axis_height,
                             axis_ticks=axis_ticks, colors=colors,
-                            digits=digits))
+                            digits=digits, padding=padding))
 
     # create widget
     htmlwidgets::createWidget(
@@ -101,10 +103,13 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
         width = width,
         height = height,
         sizingPolicy=htmlwidgets::sizingPolicy(
+                    padding=padding,
                     browser.defaultWidth=800,
                     browser.defaultHeight=600,
+                    browser.padding = padding,
                     knitr.defaultWidth=800,
-                    knitr.defaultHeight=600),
+                    knitr.defaultHeight=600,
+                    viewer.padding = padding),
         package = 'horizon'
         )
 }
