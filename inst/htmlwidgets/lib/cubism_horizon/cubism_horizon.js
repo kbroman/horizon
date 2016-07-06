@@ -61,7 +61,6 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
               .colors(colors)
               .extent(ylim) // adjust y-axis in each
               .format(d3.format(".3f")));
-    // FIX ME: need to add control of colors with .colors()
 
     // bottom axis
     var bottom_axis = context.axis().orient("bottom").ticks(axis_ticks)
