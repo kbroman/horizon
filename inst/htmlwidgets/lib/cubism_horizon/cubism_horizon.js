@@ -81,6 +81,9 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     div.style("border-top", "solid 0px #fff")
         .style("border-bottom", "solid 0px #fff")
 
+    // adjust height of axis divs
+    div.selectAll("div.axis").style("height", axis_height + "px")
+
     function make_metric(vector, label) {
         return context.metric(function(start, stop, step, callback) {
                 callback(null, vector)
