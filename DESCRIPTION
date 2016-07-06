@@ -14,6 +14,7 @@ Suggests:
     jsonlite,
     devtools,
     roxygen2,
+    lubridate
 License: GPL-3 | file LICENSE
 URL: https://github.com/kbroman/horizon
 Roxygen: list(wrap=FALSE)
