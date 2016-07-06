@@ -76,6 +76,10 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     div.selectAll("span.value").style("line-height", horizon_height + "px")
     div.selectAll("span.title").style("line-height", horizon_height + "px")
 
+    // upper and lower borders
+    div.style("border-top", "solid 0px #fff")
+        .style("border-bottom", "solid 0px #fff")
+
     function make_metric(vector, label) {
         return context.metric(function(start, stop, step, callback) {
                 callback(null, vector)
