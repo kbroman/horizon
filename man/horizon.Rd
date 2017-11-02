@@ -6,7 +6,7 @@
 \usage{
 horizon(dates, df, date_format = "\%Y-\%m-\%d", digits = NULL,
   width = NULL, height = NULL, axis_height = 30, axis_ticks = 4,
-  padding = 15, colors = NULL)
+  padding = 15, colors = NULL, tick_format = NULL, focus_format = NULL)
 }
 \arguments{
 \item{dates}{Vector of dates as character strings (e.g., as \code{"YYYY-MM-DD"}).
@@ -35,6 +35,10 @@ gap, and first and last define the time axes.}
 \code{length(colors)/2} determines the number of bands; the first
 half are the colors used for the negative bands, and the second
 half are the colors for the positive bands.}
+
+\item{tick_format}{A character string representing the format for date/times in the top and bottom axes.}
+
+\item{focus_format}{A character string representing the format for date/times in the focus line.}
 }
 \description{
 Horizon chart of multiple time series
@@ -78,4 +82,3 @@ colnames(y) <- letters[1:p]
 horizon(dates, y)
 
 }
-

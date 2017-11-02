@@ -19,7 +19,8 @@
 #' \code{length(colors)/2} determines the number of bands; the first
 #' half are the colors used for the negative bands, and the second
 #' half are the colors for the positive bands.
-#'
+#' @param tick_format A character string representing the format for date/times in the top and bottom axes.
+#' @param focus_format A character string representing the format for date/times in the focus line.
 #'
 #' @details
 #' The input \code{dates} need to be converted from character strings to JSON dates.
@@ -65,7 +66,7 @@
 horizon <- function(dates, df, date_format = "%Y-%m-%d",
                     digits = NULL, width = NULL, height = NULL,
                     axis_height = 30, axis_ticks=4, padding=15,
-                    colors=NULL)
+                    colors=NULL, tick_format=NULL, focus_format=NULL)
 {
     lab <- colnames(df)
     if(is.null(lab))
@@ -94,7 +95,9 @@ horizon <- function(dates, df, date_format = "%Y-%m-%d",
     x = list(dates=dates, labels=lab, data=df, date_format=date_format,
              chartOpts=list(height=height, axis_height=axis_height,
                             axis_ticks=axis_ticks, colors=colors,
-                            digits=digits, padding=padding))
+                            digits=digits, padding=padding,
+                            tick_format=tick_format,
+                            focus_format=focus_format))
 
     # create widget
     htmlwidgets::createWidget(

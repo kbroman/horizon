@@ -10,6 +10,8 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     var colors = chartOpts.colors
     var digits = chartOpts.digits
     var padding = chartOpts.padding
+    var tick_format = chartOpts.tick_format // char string for date/time format for axis ticks
+    var focus_format = chartOpts.focus_format // char string for date/time format for focus
 
     // dates from strings to proper dates
     var format = d3.time.format(date_format);
@@ -37,13 +39,17 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 
     div.append("div")
         .attr("class", "rule")
-        .call(context.rule());
+        .call(context.rule())
 
     // set x-axis domain to observed range of dates
     context.scale.domain([dates[0], dates[dates.length-1]])
 
     // top axis
     var top_axis = context.axis().orient("top").ticks(axis_ticks)
+    if(tick_format)
+        top_axis.tickFormat( function(d) { return(d3.time.format(tick_format)(d))} )
+    if(focus_format)
+        top_axis.focusFormat( function(d) { return(d3.time.format(focus_format)(d))} )
     var top_axis_svg = div.append("div").attr("class", "axis")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)
@@ -61,10 +67,14 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
         .call(context.horizon().height(horizon_height)
               .colors(colors)
               .extent(ylim) // adjust y-axis in each
-              .format(d3.format("." + digits + "f")));
+              .format(d3.format("." + digits + "f")))
 
     // bottom axis
     var bottom_axis = context.axis().orient("bottom").ticks(axis_ticks)
+    if(tick_format)
+        bottom_axis.tickFormat( function(d) { return(d3.time.format(tick_format)(d))} )
+    if(focus_format)
+        bottom_axis.focusFormat( function(d) { return(d3.time.format(focus_format)(d))} )
     var bottom_axis_svg = div.append("div").attr("class", "axis")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)

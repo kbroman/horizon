@@ -1,6 +1,6 @@
 Package: horizon
-Version: 0.1-4
-Date: 2016-07-06
+Version: 0.2-1
+Date: 2017-11-02
 Title: Horizon Chart
 Author: Karl W Broman [aut, cre]
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
@@ -19,5 +19,5 @@ License: GPL-3 | file LICENSE
 URL: https://github.com/kbroman/horizon
 Roxygen: list(wrap=FALSE)
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Authors@R: person("Karl W", "Broman", role=c("aut", "cre"), email="kbroman@biostat.wisc.edu")
