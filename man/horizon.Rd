@@ -16,7 +16,9 @@ gap, and first and last define the time axes.}
 
 \item{df}{Data frame with rows = dates, columns = values to plot}
 
-\item{date_format}{A character string representing the format of \code{dates}.}
+\item{date_format}{A character string representing the format of \code{dates}.
+See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+for the specifier strings (such as \code{\%m} for decimal month).}
 
 \item{digits}{Number of digits to show when hovering.}
 
@@ -36,9 +38,13 @@ gap, and first and last define the time axes.}
 half are the colors used for the negative bands, and the second
 half are the colors for the positive bands.}
 
-\item{tick_format}{A character string representing the format for date/times in the top and bottom axes.}
+\item{tick_format}{A character string representing the format for date/times in the top and bottom axes.
+See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+for the specifier strings (such as \code{\%m} for decimal month).}
 
-\item{focus_format}{A character string representing the format for date/times in the focus line.}
+\item{focus_format}{A character string representing the format for date/time at the focus line.
+See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+for the specifier strings (such as \code{\%m} for decimal month).}
 }
 \description{
 Horizon chart of multiple time series

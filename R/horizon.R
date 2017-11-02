@@ -8,6 +8,8 @@
 #' gap, and first and last define the time axes.
 #' @param df  Data frame with rows = dates, columns = values to plot
 #' @param date_format A character string representing the format of \code{dates}.
+#'    See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+#'    for the specifier strings (such as \code{\%m} for decimal month).
 #' @param digits Number of digits to show when hovering.
 #' @param width width in pixels
 #' @param height height in pixels
@@ -20,7 +22,11 @@
 #' half are the colors used for the negative bands, and the second
 #' half are the colors for the positive bands.
 #' @param tick_format A character string representing the format for date/times in the top and bottom axes.
-#' @param focus_format A character string representing the format for date/times in the focus line.
+#'    See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+#'    for the specifier strings (such as \code{\%m} for decimal month).
+#' @param focus_format A character string representing the format for date/time at the focus line.
+#'    See \href{https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md}{D3 v3 Time Formatting}
+#'    for the specifier strings (such as \code{\%m} for decimal month).
 #'
 #' @details
 #' The input \code{dates} need to be converted from character strings to JSON dates.
