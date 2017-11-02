@@ -1,5 +1,23 @@
 var my_colors = null
 
+which_min =
+    function(x, arr)
+{
+    d = arr.map(function(d) { return(Math.abs(d - x)) })
+
+    result = 0
+    value = d[0]
+    for(i=1; i<d.length; i++) {
+        if(d[i] < value) {
+            value = d[i]
+            result = i
+        }
+    }
+
+    return(result)
+}
+
+
 // function to make the plot
 cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
 {
@@ -48,8 +66,13 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     var top_axis = context.axis().orient("top").ticks(axis_ticks)
     if(tick_format)
         top_axis.tickFormat( d3.time.format(tick_format) )
-    if(focus_format)
-        top_axis.focusFormat( d3.time.format(focus_format) )
+    if(focus_format) {
+        top_axis.focusFormat( function(d) {
+            closest_date = dates[which_min(d, dates)]
+
+            return( d3.time.format(focus_format)(closest_date) )
+        })
+    }
     var top_axis_svg = div.append("div").attr("class", "axis")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)
@@ -73,8 +96,13 @@ cubism_plot = function(div, dates, labels, data_by_col, date_format, chartOpts)
     var bottom_axis = context.axis().orient("bottom").ticks(axis_ticks)
     if(tick_format)
         bottom_axis.tickFormat( d3.time.format(tick_format) )
-    if(focus_format)
-        bottom_axis.focusFormat( d3.time.format(focus_format) )
+    if(focus_format) {
+        bottom_axis.focusFormat( function(d) {
+            closest_date = dates[which_min(d, dates)]
+
+            return( d3.time.format(focus_format)(closest_date) )
+        })
+    }
     var bottom_axis_svg = div.append("div").attr("class", "axis")
                           .append("svg").attr("width", width)
                                         .attr("height", axis_height)
