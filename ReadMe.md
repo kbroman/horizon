@@ -22,3 +22,5 @@ devtools::install_github("kbroman/horizon")
 library(horizon)
 example(horizon)
 ```
+
+![screen shot of an example horizon plot](example.png)
