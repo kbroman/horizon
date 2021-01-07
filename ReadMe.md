@@ -8,12 +8,12 @@ from R.
 
 ### Installation
 
-Install from GitHub using
-[devtools](https://github.com/hadley/devtools):
+Install from GitHub using the
+[remotes](https://remotes.r-lib.org) package:
 
 ```r
-install.packages("devtools")
-devtools::install_github("kbroman/horizon")
+install.packages("remotes")
+remotes::install_github("kbroman/horizon")
 ```
 
 ### Try it out!
