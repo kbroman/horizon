@@ -1,5 +1,7 @@
 ## R/horizon: horizon charts via cubism.js
 
+[![R-CMD-check](https://github.com/kbroman/horizon/workflows/R-CMD-check/badge.svg)](https://github.com/kbroman/horizon/actions)
+
 Inspired by <https://gist.github.com/bae25/10797393>, we use
 [cubism.js](http://square.github.io/cubism/),
 [d3.js](https://d3js.org), and
